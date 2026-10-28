@@ -42,7 +42,7 @@ public class DamageCalculator : MonoBehaviour
             case (Element.None, _) or (_, Element.None):
                 break;
             
-            case(Element.Fire,Element.Fire) or (Element.Ice, Element.Ice):
+            case(Element.Fire, Element.Fire) or (Element.Ice, Element.Ice):
                 result = 0;
                 elementText = "одинаковые стихии";
                 break;
