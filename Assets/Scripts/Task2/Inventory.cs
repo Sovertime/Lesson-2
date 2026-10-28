@@ -1,77 +1,80 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory
+namespace Task2
 {
-    private Dictionary<string, int> _items = new Dictionary<string, int>();
-    private const int MaxSlots = 10;
-
-    public void AddItem(string item, int count = 1)
+    public class Inventory
     {
-        if (count <= 0)
+        private Dictionary<string, int> _items = new Dictionary<string, int>();
+        private const int MaxSlots = 10;
+
+        public void AddItem(string item, int count = 1)
         {
-            Debug.Log("Количество должно быть больше нуля!");
-            return;
-        }
+            if (count <= 0)
+            {
+                Debug.Log("Количество должно быть больше нуля!");
+                return;
+            }
         
-        if (_items.ContainsKey(item))
-        {
-            _items[item] += count;
+            if (_items.ContainsKey(item))
+            {
+                _items[item] += count;
+                Debug.Log($"Добавлено: {item} x {count}");
+            
+                return;
+            }
+
+            if (_items.Count >= MaxSlots)
+            {
+                Debug.LogWarning("Отказано: инвентарь переполнен!");
+                return;
+            }
+        
+            _items.Add(item, count);
             Debug.Log($"Добавлено: {item} x {count}");
-            
-            return;
         }
 
-        if (_items.Count >= MaxSlots)
+        public void RemoveItem(string item, int count = 1)
         {
-            Debug.LogWarning("Отказано: инвентарь переполнен!");
-            return;
-        }
+            if (count <= 0)
+            {
+                Debug.Log("Количество должно быть больше нуля!");
+                return;
+            }
         
-        _items.Add(item, count);
-        Debug.Log($"Добавлено: {item} x {count}");
-    }
+            if (!_items.ContainsKey(item))
+            {
+                Debug.LogWarning($"Нельзя удалить {item}: предмета нет в инвентаре!");
+                return;
+            }
 
-    public void RemoveItem(string item, int count = 1)
-    {
-        if (count <= 0)
-        {
-            Debug.Log("Количество должно быть больше нуля!");
-            return;
-        }
-        
-        if (!_items.ContainsKey(item))
-        {
-            Debug.LogWarning($"Нельзя удалить {item}: предмета нет в инвентаре!");
-            return;
-        }
+            if (_items[item] < count)
+            {
+                Debug.LogWarning($"Отказ");
+                return;
+            }
 
-        if (_items[item] < count)
-        {
-            Debug.LogWarning($"Отказ");
-            return;
-        }
-
-        if (_items[item] == count)
-        {
-            _items.Remove(item);
-            Debug.Log($"Удалено: {item} x {count}");
+            if (_items[item] == count)
+            {
+                _items.Remove(item);
+                Debug.Log($"Удалено: {item} x {count}");
             
-            return;
+                return;
+            }
+
+            _items[item] -= count;
+            Debug.Log($"Удалено: {item} x {count}"); // тут хз пока с количеством
         }
 
-        _items[item] -= count;
-        Debug.Log($"Удалено: {item} x {count}"); // тут хз пока с количеством
-    }
-
-    public void Print()
-    {
-        foreach (var item in _items)
+        public void Print()
         {
-            Debug.Log($"{item.Key}: {item.Value}");
-        }
+            foreach (var item in _items)
+            {
+                Debug.Log($"{item.Key}: {item.Value}");
+            }
 
-        int finalslots = MaxSlots - _items.Count;
-        Debug.Log($"Занято: {_items.Count}/{MaxSlots}. Свободно: {finalslots}");
+            int finalslots = MaxSlots - _items.Count;
+            Debug.Log($"Занято: {_items.Count}/{MaxSlots}. Свободно: {finalslots}");
+        }
     }
 }
