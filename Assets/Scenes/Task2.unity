@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 713752599}
   - component: {fileID: 713752598}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6566497813433331667, guid: 35faf9bec6608ff4897378f2d8d49eca, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 6936027664392056462, guid: 35faf9bec6608ff4897378f2d8d49eca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 1561661432}
   - component: {fileID: 1561661431}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

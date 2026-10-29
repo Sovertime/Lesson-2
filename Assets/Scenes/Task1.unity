@@ -1262,7 +1262,7 @@ PrefabInstance:
       objectReference: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6566497813433331667, guid: 35faf9bec6608ff4897378f2d8d49eca, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 6936027664392056462, guid: 35faf9bec6608ff4897378f2d8d49eca, type: 3}
       propertyPath: m_LocalPosition.x
