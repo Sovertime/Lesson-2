@@ -8,7 +8,9 @@ namespace Task3
         private Unit _hero;
         private Unit _enemy;
     
+        [Header("Arena Settings")]
         [SerializeField] private HeroClass heroClass;
+        [SerializeField] private float roundDelay = 3f;
 
         private const int Rounds = 15;
 
@@ -91,7 +93,7 @@ namespace Task3
             
                 move++;
             
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(roundDelay);
             }
         }
     }
