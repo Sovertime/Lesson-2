@@ -12,7 +12,7 @@ namespace Task2
         {
             if (count <= 0)
             {
-                Debug.Log("Количество должно быть больше нуля!");
+                Debug.LogWarning("Количество должно быть больше нуля!");
                 return;
             }
         
@@ -26,7 +26,7 @@ namespace Task2
 
             if (_items.Count >= MaxSlots)
             {
-                Debug.LogWarning("Отказано: инвентарь переполнен!");
+                Debug.LogWarning($"Не удалось добавить {item}: инвентарь переполнен!");
                 return;
             }
         
@@ -44,13 +44,13 @@ namespace Task2
         
             if (!_items.ContainsKey(item))
             {
-                Debug.LogWarning($"Нельзя удалить {item}: предмета нет в инвентаре!");
+                Debug.LogWarning($"Не удалось удалить {item}: предмета нет в инвентаре!");
                 return;
             }
 
             if (_items[item] < count)
             {
-                Debug.LogWarning($"Отказ");
+                Debug.LogWarning($"Не удалось удалить {item}: требуется {count}, доступно {_items[item]}.");
                 return;
             }
 
@@ -63,7 +63,7 @@ namespace Task2
             }
 
             _items[item] -= count;
-            Debug.Log($"Удалено: {item} x {count}"); // тут хз пока с количеством
+            Debug.Log($"Удалено: {item} x {count}");
         }
 
         public void Print()
@@ -73,8 +73,8 @@ namespace Task2
                 Debug.Log($"{item.Key}: {item.Value}");
             }
 
-            int finalslots = MaxSlots - _items.Count;
-            Debug.Log($"Занято: {_items.Count}/{MaxSlots}. Свободно: {finalslots}");
+            int freeSlots = MaxSlots - _items.Count;
+            Debug.Log($"Занято: {_items.Count}/{MaxSlots}. Свободно: {freeSlots}");
         }
     }
 }
