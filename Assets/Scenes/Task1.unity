@@ -442,38 +442,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 713296112}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
 --- !u!4 &713296110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8594313489449427422, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
   m_PrefabInstance: {fileID: 713296109}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &713296111 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-  m_PrefabInstance: {fileID: 713296109}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &713296112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713296111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4676f05bab633584a9c81af5df300387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageCalculator
-  baseDamage: 10
-  baseArmor: 3
-  critChance: 0.3
-  weaponElement: 1
-  targetElement: 2
 --- !u!1001 &778618455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,38 +508,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 778618458}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
 --- !u!4 &778618456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8594313489449427422, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
   m_PrefabInstance: {fileID: 778618455}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &778618457 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-  m_PrefabInstance: {fileID: 778618455}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &778618458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778618457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4676f05bab633584a9c81af5df300387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageCalculator
-  baseDamage: 10
-  baseArmor: 3
-  critChance: 0.3
-  weaponElement: 1
-  targetElement: 2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,38 +623,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 880149463}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
 --- !u!4 &880149461 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8594313489449427422, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
   m_PrefabInstance: {fileID: 880149460}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &880149462 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-  m_PrefabInstance: {fileID: 880149460}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &880149463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880149462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4676f05bab633584a9c81af5df300387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageCalculator
-  baseDamage: 10
-  baseArmor: 3
-  critChance: 0.3
-  weaponElement: 1
-  targetElement: 2
 --- !u!1001 &997379636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -764,33 +689,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 997379639}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
 --- !u!4 &997379637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8594313489449427422, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
   m_PrefabInstance: {fileID: 997379636}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &997379638 stripped
+--- !u!1 &1300322008 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-  m_PrefabInstance: {fileID: 997379636}
+  m_CorrespondingSourceObject: {fileID: 6566497813433331667, guid: 35faf9bec6608ff4897378f2d8d49eca, type: 3}
+  m_PrefabInstance: {fileID: 1418896558246716890}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &997379639
+--- !u!114 &1300322013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997379638}
+  m_GameObject: {fileID: 1300322008}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4676f05bab633584a9c81af5df300387, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageCalculator
+  m_EditorClassIdentifier: Assembly-CSharp::Task1.DamageCalculator
   baseDamage: 10
   baseArmor: 3
   critChance: 0.3
@@ -1007,60 +929,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1583361993}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
 --- !u!4 &1583361991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8594313489449427422, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
   m_PrefabInstance: {fileID: 1583361990}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1583361992 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-  m_PrefabInstance: {fileID: 1583361990}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1583361993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583361992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4676f05bab633584a9c81af5df300387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageCalculator
-  baseDamage: 10
-  baseArmor: 3
-  critChance: 0.3
-  weaponElement: 1
-  targetElement: 2
---- !u!1 &1764868864 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-  m_PrefabInstance: {fileID: 4811749360523574901}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1764868865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764868864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4676f05bab633584a9c81af5df300387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageCalculator
-  baseDamage: 10
-  baseArmor: 3
-  critChance: 0.3
-  weaponElement: 1
-  targetElement: 2
 --- !u!4 &1764868869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8594313489449427422, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
@@ -1125,38 +1000,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1850697744}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
 --- !u!4 &1850697742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8594313489449427422, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
   m_PrefabInstance: {fileID: 1850697741}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1850697743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-  m_PrefabInstance: {fileID: 1850697741}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1850697744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850697743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4676f05bab633584a9c81af5df300387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageCalculator
-  baseDamage: 10
-  baseArmor: 3
-  critChance: 0.3
-  weaponElement: 1
-  targetElement: 2
 --- !u!1001 &1967463524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1216,38 +1066,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1967463527}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
 --- !u!4 &1967463525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8594313489449427422, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
   m_PrefabInstance: {fileID: 1967463524}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1967463526 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-  m_PrefabInstance: {fileID: 1967463524}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1967463527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967463526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4676f05bab633584a9c81af5df300387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageCalculator
-  baseDamage: 10
-  baseArmor: 3
-  critChance: 0.3
-  weaponElement: 1
-  targetElement: 2
 --- !u!1001 &1418896558246716890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1307,7 +1132,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6566497813433331667, guid: 35faf9bec6608ff4897378f2d8d49eca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1300322013}
   m_SourcePrefab: {fileID: 100100000, guid: 35faf9bec6608ff4897378f2d8d49eca, type: 3}
 --- !u!1001 &4811749360523574901
 PrefabInstance:
@@ -1368,10 +1196,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5912948334075802823, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1764868865}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9920b65b1814b7e47b92b44c71a752aa, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
