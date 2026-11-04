@@ -5,29 +5,29 @@ namespace Task1
     public class DamageCalculator : MonoBehaviour
     {
         [Header("Base stats")]
-        [SerializeField, Min(0)] private int baseDamage = 10;
-        [SerializeField, Min(0)] private int baseArmor = 3;
-        [SerializeField, Range(0f, 1f)] private float critChance = 0.3f;
+        [SerializeField, Min(0)] private int m_baseDamage = 10;
+        [SerializeField, Min(0)] private int m_baseArmor = 3;
+        [SerializeField, Range(0f, 1f)] private float m_critChance = 0.3f;
     
         [Header("Elements")]
-        [SerializeField] private Element weaponElement;
-        [SerializeField] private Element targetElement;
+        [SerializeField] private Element m_weaponElement;
+        [SerializeField] private Element m_targetElement;
     
         private const float ElementMultiplier = 1.5f;
-        private int _attackCount;
+        private int m_attackCount;
 
-        void Start()
+        private void Start()
         {
             Debug.Log("Нажмите [Space] для удара");
         }
 
-        void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-                Calculate(baseDamage, baseArmor, weaponElement, targetElement, critChance);
+                Calculate(m_baseDamage, m_baseArmor, m_weaponElement, m_targetElement, m_critChance);
         }
 
-        enum Element
+        private enum Element
         {
             None,
             Fire,
@@ -55,14 +55,14 @@ namespace Task1
                     break;
             }
 
-            _attackCount++;
+            m_attackCount++;
 
             bool isCrit = Random.Range(0f, 1f) < crit;
             int finalResult = isCrit ? result * 2 : result;
 
             string critText = isCrit ? "крит х2" : "без крита";
         
-            Debug.Log($"Удар {_attackCount}: {finalResult} урона ({elementText}, {critText})");
+            Debug.Log($"Удар {m_attackCount}: {finalResult} урона ({elementText}, {critText})");
         }
     }
 }
