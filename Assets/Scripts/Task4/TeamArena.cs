@@ -8,12 +8,12 @@ namespace Task4
 {
     public class TeamArena : MonoBehaviour
     {
-        [SerializeField, Min(0f)] private float roundDelay = 1.5f;
+        [Header("Arena Settings")]
+        [SerializeField, Min(0f)] private float m_roundDelay = 1.5f;
+        [SerializeField, Min(1)] private int m_rounds = 30;
         
-        private List<Unit> _enemies = new List<Unit>();
-        private List<Unit> _heroes = new List<Unit>();
-
-        private const int Rounds = 30;
+        private List<Unit> m_enemies = new List<Unit>();
+        private List<Unit> m_heroes = new List<Unit>();
 
         private void Awake()
         {
@@ -25,22 +25,22 @@ namespace Task4
 
         private void CreateEnemies()
         {
-            while (_enemies.Count < 3)
+            while (m_enemies.Count < 3)
             {
                 int randomEnemy = Random.Range(0, 3);
 
                 switch (randomEnemy)
                 {
                     case 0:
-                        _enemies.Add(new Unit("Гоблин", 50, 4, 0.15f, DamageCalculator.Element.None, 
+                        m_enemies.Add(new Unit("Гоблин", 50, 4, 0.15f, DamageCalculator.Element.None, 
                             new Weapon("Кинжал", 4, 8, DamageCalculator.Element.None)));
                         break;
                     case 1:
-                        _enemies.Add(new Unit("Орк", 140, 8, 0.25f, DamageCalculator.Element.Fire,
+                        m_enemies.Add(new Unit("Орк", 140, 8, 0.25f, DamageCalculator.Element.Fire,
                             new Weapon("Топор", 8, 14, DamageCalculator.Element.Fire)));
                         break;
                     case 2:
-                        _enemies.Add(new Unit("Тролль", 80, 5, 0.2f, DamageCalculator.Element.Ice, 
+                        m_enemies.Add(new Unit("Тролль", 80, 5, 0.2f, DamageCalculator.Element.Ice, 
                             new Weapon("Копье", 6, 12, DamageCalculator.Element.Ice)));
                         break;
                 }
@@ -49,66 +49,74 @@ namespace Task4
 
         private void CreateHeroes()
         {
-            while (_heroes.Count < 3)
+            while (m_heroes.Count < 3)
             {
                 int randomHero = Random.Range(0, 2);
             
                 switch (randomHero)
                 {
                     case 0:
-                        _heroes.Add(new Unit("Воин", 100, 10, 0.2f, DamageCalculator.Element.Fire, 
+                        m_heroes.Add(new Unit("Воин", 100, 10, 0.2f, DamageCalculator.Element.Fire, 
                             new Weapon("Меч", 6, 12, DamageCalculator.Element.Fire)));
                         break;
                     case 1:
-                        _heroes.Add(new Unit("Маг", 130, 3, 0.35f, DamageCalculator.Element.Ice,
+                        m_heroes.Add(new Unit("Маг", 130, 3, 0.35f, DamageCalculator.Element.Ice,
                             new Weapon("Посох", 4, 20, DamageCalculator.Element.Ice)));
                         break;
                 }
             }
         }
 
-        void Start()
+        private void Start()
         {
             StartCoroutine(Fight());
         }
 
-        IEnumerator Fight()
+        private IEnumerator Fight()
         {
-            int move = 1;
-            
-            while (move <= Rounds)
+            int currentRound = 1;
+
+            while (currentRound <= m_rounds)
             {
-                Debug.LogWarning($"Раунд: {move}");
+                Debug.LogWarning($"Раунд: {currentRound}");
+                
+                int maxCount = Mathf.Max(m_heroes.Count, m_enemies.Count);
 
-                for (int i = 0; i < _heroes.Count; i++)
+                for (int i = 0; i < maxCount; i++)
                 {
-                    yield return new WaitForSeconds(roundDelay);
-                    
-                    Attack(_heroes[i], _enemies, "green");
+                    yield return new WaitForSeconds(m_roundDelay);
 
-                    if (GetRandomUnit(_enemies) == null)
+                    if (i < m_heroes.Count)
                     {
-                        Debug.LogWarning("Герои победили!");
-                        PrintResults();
-                        
-                        yield break;
+                        Attack(m_heroes[i], m_enemies, "green");
+
+                        if (GetRandomUnit(m_enemies) == null)
+                        {
+                            Debug.LogWarning("Герои победили!");
+                            PrintResults();
+                            
+                            yield break;
+                        }
                     }
                     
-                    Attack(_enemies[i], _heroes, "red");
-
-                    if (GetRandomUnit(_heroes) == null)
+                    if (i < m_enemies.Count)
                     {
-                        Debug.LogWarning("Враги победили!");
-                        PrintResults();
-                        
-                        yield break;
+                        Attack(m_enemies[i], m_heroes, "red");
+
+                        if (GetRandomUnit(m_heroes) == null)
+                        {
+                            Debug.LogWarning("Враги победили!");
+                            PrintResults();
+                            
+                            yield break;
+                        }
                     }
                 }
                 
-                move++;
+                currentRound++;
             }
-            Debug.LogWarning("Ничья! Победила дружба");
             
+            Debug.LogWarning("Ничья! Победила дружба");
             PrintResults();
         }
 
@@ -177,16 +185,16 @@ namespace Task4
         {
             Debug.LogWarning("=== КОМАНДА ГЕРОЕВ ===");
 
-            foreach (Unit hero in _heroes)
+            foreach (Unit hero in m_heroes)
             {
-                Debug.Log($"<color=green>{hero.Name} | HP: {hero.Health} | Броня: {hero.Armor} | Оружие: {hero.Weapon.Name}</color>");
+                Debug.Log($"<color=green>{hero.Name} | HP: {hero.Health} | Броня: {hero.Armor} | Оружие: {hero.Weapon?.Name ?? "Без оружия"}</color>");
             }
             
             Debug.LogWarning("=== КОМАНДА ВРАГОВ ===");
 
-            foreach (Unit enemy in _enemies)
+            foreach (Unit enemy in m_enemies)
             {
-                Debug.Log($"<color=red>{enemy.Name} | HP: {enemy.Health} | Броня: {enemy.Armor} | Оружие: {enemy.Weapon.Name}</color>");
+                Debug.Log($"<color=red>{enemy.Name} | HP: {enemy.Health} | Броня: {enemy.Armor} | Оружие: {enemy.Weapon?.Name ?? "Без оружия"}</color>");
             }
         }
 
@@ -199,7 +207,7 @@ namespace Task4
             
             Debug.LogWarning("=== КОМАНДА ГЕРОЕВ ===");
 
-            foreach (Unit hero in _heroes)
+            foreach (Unit hero in m_heroes)
             {
                 if (hero.Health > 0)
                     aliveHeroes++;
@@ -209,7 +217,7 @@ namespace Task4
             
             Debug.LogWarning("=== ВРАГИ ===");
 
-            foreach (Unit enemy in _enemies)
+            foreach (Unit enemy in m_enemies)
             {
                 if (enemy.Health > 0)
                     aliveEnemies++;
@@ -217,8 +225,8 @@ namespace Task4
                 Debug.Log($"<color=red>{enemy.Name} | HP: {enemy.Health} | Оружие: {enemy.Weapon?.Name ?? "Без оружия"}</color>");
             }
             
-            Debug.LogWarning($"Выжило героев: {aliveHeroes}/{_heroes.Count} | " +
-                             $"Выжило врагов: {aliveEnemies}/{_enemies.Count}");
+            Debug.LogWarning($"Выжило героев: {aliveHeroes}/{m_heroes.Count} | " +
+                             $"Выжило врагов: {aliveEnemies}/{m_enemies.Count}");
         }
     }
 }
