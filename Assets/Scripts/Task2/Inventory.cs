@@ -5,7 +5,7 @@ namespace Task2
 {
     public class Inventory
     {
-        private Dictionary<string, int> _items = new Dictionary<string, int>();
+        private Dictionary<string, int> m_items = new Dictionary<string, int>();
         private const int MaxSlots = 10;
 
         public void AddItem(string item, int count = 1)
@@ -16,21 +16,21 @@ namespace Task2
                 return;
             }
         
-            if (_items.ContainsKey(item))
+            if (m_items.ContainsKey(item))
             {
-                _items[item] += count;
+                m_items[item] += count;
                 Debug.Log($"Добавлено: {item} x {count}");
             
                 return;
             }
 
-            if (_items.Count >= MaxSlots)
+            if (m_items.Count >= MaxSlots)
             {
                 Debug.LogWarning($"Не удалось добавить {item}: инвентарь переполнен!");
                 return;
             }
         
-            _items.Add(item, count);
+            m_items.Add(item, count);
             Debug.Log($"Добавлено: {item} x {count}");
         }
 
@@ -42,39 +42,39 @@ namespace Task2
                 return;
             }
         
-            if (!_items.ContainsKey(item))
+            if (!m_items.ContainsKey(item))
             {
                 Debug.LogWarning($"Не удалось удалить {item}: предмета нет в инвентаре!");
                 return;
             }
 
-            if (_items[item] < count)
+            if (m_items[item] < count)
             {
-                Debug.LogWarning($"Не удалось удалить {item}: требуется {count}, доступно {_items[item]}.");
+                Debug.LogWarning($"Не удалось удалить {item}: требуется {count}, доступно {m_items[item]}.");
                 return;
             }
 
-            if (_items[item] == count)
+            if (m_items[item] == count)
             {
-                _items.Remove(item);
+                m_items.Remove(item);
                 Debug.Log($"Удалено: {item} x {count}");
             
                 return;
             }
 
-            _items[item] -= count;
+            m_items[item] -= count;
             Debug.Log($"Удалено: {item} x {count}");
         }
 
         public void Print()
         {
-            foreach (var item in _items)
+            foreach (var item in m_items)
             {
                 Debug.Log($"{item.Key}: {item.Value}");
             }
 
-            int freeSlots = MaxSlots - _items.Count;
-            Debug.Log($"Занято: {_items.Count}/{MaxSlots}. Свободно: {freeSlots}");
+            int freeSlots = MaxSlots - m_items.Count;
+            Debug.Log($"Занято: {m_items.Count}/{MaxSlots}. Свободно: {freeSlots}");
         }
     }
 }

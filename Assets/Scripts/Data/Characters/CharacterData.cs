@@ -1,9 +1,9 @@
 using UnityEngine;
 
 using Element = Combat.DamageCalculator.Element;
-using Weapons;
+using Data.Weapons;
 
-namespace Characters
+namespace Data.Characters
 {
     [CreateAssetMenu(fileName = "Character", menuName = "Game/Character")]
     public class CharacterData : ScriptableObject

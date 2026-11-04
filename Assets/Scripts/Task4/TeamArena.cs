@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using DamageCalculator = Combat.DamageCalculator;
-using Characters;
+using Data.Characters;
 
 namespace Task4
 {
@@ -98,7 +98,7 @@ namespace Task4
 
         private void Attack(Unit attacker, List<Unit> targets, string color)
         {
-            if (attacker.Health <= 0 || attacker.Weapon == null)
+            if (attacker.health <= 0 || attacker.weapon == null)
                 return;
             
             Unit target = GetRandomUnit(targets);
@@ -106,15 +106,15 @@ namespace Task4
             if (target == null)
                 return;
 
-            int baseDamage = Random.Range(attacker.Weapon.MinDamage, attacker.Weapon.MaxDamage + 1);
+            int baseDamage = Random.Range(attacker.weapon.minDamage, attacker.weapon.maxDamage + 1);
             
-            int damage = DamageCalculator.Calculate(baseDamage, target.Armor, attacker.Weapon.Element, target.Element, attacker.CritChance);
+            int damage = DamageCalculator.Calculate(baseDamage, target.armor, attacker.weapon.element, target.element, attacker.critChance);
             target.TakeDamage(damage);
 
-            Debug.Log($"<color={color}>{attacker.Name} [{attacker.Weapon.Name}] атакует {target.Name}, урон: {damage} | осталось HP: {target.Health}</color>");
+            Debug.Log($"<color={color}>{attacker.name} [{attacker.weapon.name}] атакует {target.name}, урон: {damage} | осталось HP: {target.health}</color>");
 
-            if (target.Health == 0)
-                Debug.LogWarning($"{target.Name} погиб!");
+            if (target.health == 0)
+                Debug.LogWarning($"{target.name} погиб!");
             
             TryLootWeapon(attacker, target);
         }
@@ -125,7 +125,7 @@ namespace Task4
             
             foreach (Unit unit in units)
             {
-                if (unit.Health > 0)
+                if (unit.health > 0)
                 {
                     aliveUnits.Add(unit);
                 }
@@ -136,24 +136,24 @@ namespace Task4
 
         private void TryLootWeapon(Unit attacker, Unit target)
         {
-            if (target.Health > 0)
+            if (target.health > 0)
                 return;
 
-            Weapon currentWeapon = attacker.Weapon;
-            Weapon droppedWeapon = target.Weapon;
+            Weapon currentWeapon = attacker.weapon;
+            Weapon droppedWeapon = target.weapon;
 
             if (droppedWeapon == null)
                 return;
 
-            int currentDamage = currentWeapon.MinDamage + currentWeapon.MaxDamage;
-            int droppedDamage = droppedWeapon.MinDamage + droppedWeapon.MaxDamage;
+            int currentDamage = currentWeapon.minDamage + currentWeapon.maxDamage;
+            int droppedDamage = droppedWeapon.minDamage + droppedWeapon.maxDamage;
 
             if (droppedDamage > currentDamage)
             {
-                attacker.Weapon = droppedWeapon;
-                target.Weapon = null;
+                attacker.weapon = droppedWeapon;
+                target.weapon = null;
                 
-                Debug.LogWarning($"{attacker.Name} подобрал {droppedWeapon.Name} вместо {currentWeapon.Name}!");
+                Debug.LogWarning($"{attacker.name} подобрал {droppedWeapon.name} вместо {currentWeapon.name}!");
             }
         }
 
@@ -163,14 +163,14 @@ namespace Task4
 
             foreach (Unit hero in m_heroes)
             {
-                Debug.Log($"<color=green>{hero.Name} | HP: {hero.Health} | Броня: {hero.Armor} | Оружие: {hero.Weapon?.Name ?? "Без оружия"}</color>");
+                Debug.Log($"<color=green>{hero.name} | HP: {hero.health} | Броня: {hero.armor} | Оружие: {hero.weapon?.name ?? "Без оружия"}</color>");
             }
             
             Debug.LogWarning("=== КОМАНДА ВРАГОВ ===");
 
             foreach (Unit enemy in m_enemies)
             {
-                Debug.Log($"<color=red>{enemy.Name} | HP: {enemy.Health} | Броня: {enemy.Armor} | Оружие: {enemy.Weapon?.Name ?? "Без оружия"}</color>");
+                Debug.Log($"<color=red>{enemy.name} | HP: {enemy.health} | Броня: {enemy.armor} | Оружие: {enemy.weapon?.name ?? "Без оружия"}</color>");
             }
         }
 
@@ -185,20 +185,20 @@ namespace Task4
 
             foreach (Unit hero in m_heroes)
             {
-                if (hero.Health > 0)
+                if (hero.health > 0)
                     aliveHeroes++;
                 
-                Debug.Log($"<color=green>{hero.Name} | HP: {hero.Health} | Оружие: {hero.Weapon?.Name ?? "Без оружия"}</color>");
+                Debug.Log($"<color=green>{hero.name} | HP: {hero.health} | Оружие: {hero.weapon?.name ?? "Без оружия"}</color>");
             }
             
             Debug.LogWarning("=== ВРАГИ ===");
 
             foreach (Unit enemy in m_enemies)
             {
-                if (enemy.Health > 0)
+                if (enemy.health > 0)
                     aliveEnemies++;
                 
-                Debug.Log($"<color=red>{enemy.Name} | HP: {enemy.Health} | Оружие: {enemy.Weapon?.Name ?? "Без оружия"}</color>");
+                Debug.Log($"<color=red>{enemy.name} | HP: {enemy.health} | Оружие: {enemy.weapon?.name ?? "Без оружия"}</color>");
             }
             
             Debug.LogWarning($"Выжило героев: {aliveHeroes}/{m_heroes.Count} | " +
