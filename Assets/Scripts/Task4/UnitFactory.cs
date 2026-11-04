@@ -1,7 +1,7 @@
 using Random = UnityEngine.Random;
 
-using Characters;
-using Weapons;
+using Data.Characters;
+using Data.Weapons;
 
 namespace Task4
 {

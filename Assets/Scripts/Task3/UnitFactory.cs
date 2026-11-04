@@ -1,4 +1,4 @@
-using Characters;
+using Data.Characters;
 
 namespace Task3
 {
@@ -6,6 +6,9 @@ namespace Task3
     {
         public static Unit Create(CharacterData data)
         {
+            if (data == null)
+                throw new System.ArgumentNullException(nameof(data));
+            
             return new Unit(
                 data.characterName,
                 data.health,

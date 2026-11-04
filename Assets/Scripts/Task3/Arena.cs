@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-using Characters;
+using Data.Characters;
 namespace Task3
 {
     public class Arena : MonoBehaviour
@@ -23,6 +23,8 @@ namespace Task3
         [SerializeField] private CharacterData m_orcData;
         [SerializeField] private CharacterData m_trollData;
 
+        private WaitForSeconds m_roundDelayWait;
+
         public enum HeroClass
         {
             Warrior,
@@ -31,6 +33,8 @@ namespace Task3
         
         private void Awake()
         {
+            m_roundDelayWait = new WaitForSeconds(m_roundDelay);
+            
             switch (m_heroClass)
             {
                 case HeroClass.Warrior:
@@ -102,7 +106,7 @@ namespace Task3
             
                 currentRound++;
             
-                yield return new WaitForSeconds(m_roundDelay);
+                yield return m_roundDelayWait;
             }
         }
     }

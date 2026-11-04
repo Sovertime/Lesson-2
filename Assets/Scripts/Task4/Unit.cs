@@ -6,26 +6,26 @@ namespace Task4
 {
     public class Unit
     {
-        public string Name;
-        public int Health { get; private set; }
-        public int Armor;
-        public float CritChance;
-        public DamageCalculator.Element Element;
-        public Weapon Weapon;
+        public string name { get; }
+        public int health { get; private set; }
+        public int armor { get; }
+        public float critChance { get; }
+        public DamageCalculator.Element element { get; }
+        public Weapon weapon { get; set; }
 
         public Unit(string name, int health, int armor, float critChance, DamageCalculator.Element element, Weapon weapon)
         {
-            Name = name;
-            Health = health;
-            Armor = armor;
-            CritChance = critChance;
-            Element = element;
-            Weapon = weapon;
+            this.name = name;
+            this.health = health;
+            this.armor = armor;
+            this.critChance = critChance;
+            this.element = element;
+            this.weapon = weapon;
         }
 
         public void TakeDamage(int damage)
         {
-            Health = Mathf.Max(0, Health - damage);
+            health = Mathf.Max(0, health - damage);
         }
     }
 }

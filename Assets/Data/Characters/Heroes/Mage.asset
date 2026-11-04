@@ -19,7 +19,4 @@ MonoBehaviour:
   m_armor: 3
   m_critChance: 0.35
   m_element: 2
-  m_weaponName: "\u041F\u043E\u0441\u043E\u0445"
-  m_weaponMinDamage: 4
-  m_weaponMaxDamage: 20
-  m_weaponElement: 2
+  m_startWeapon: {fileID: 11400000, guid: 8b1bfe266376b0549a2dcc51537d8c72, type: 2}
