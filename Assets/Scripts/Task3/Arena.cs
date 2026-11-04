@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+using Characters;
 namespace Task3
 {
     public class Arena : MonoBehaviour
@@ -12,44 +13,53 @@ namespace Task3
         [SerializeField] private HeroClass m_heroClass;
         [SerializeField, Min(0f)] private float m_roundDelay = 3f;
         [SerializeField, Min(1)] private int m_rounds = 15;
+        
+        [Header("Heroes")]
+        [SerializeField] private CharacterData m_warriorData;
+        [SerializeField] private CharacterData m_mageData;
+        
+        [Header("Enemies")]
+        [SerializeField] private CharacterData m_goblinData;
+        [SerializeField] private CharacterData m_orcData;
+        [SerializeField] private CharacterData m_trollData;
 
         public enum HeroClass
         {
             Warrior,
             Mage
         }
-
+        
         private void Awake()
         {
             switch (m_heroClass)
             {
                 case HeroClass.Warrior:
-                    m_hero = UnitFactory.CreateWarrior();
+                    m_hero = UnitFactory.Create(m_warriorData);
                     break;
-            
+
                 case HeroClass.Mage:
-                    m_hero = UnitFactory.CreateMage();
+                    m_hero = UnitFactory.Create(m_mageData);
                     break;
             }
-        
+
             int randomEnemy = Random.Range(0, 3);
 
             switch (randomEnemy)
             {
                 case 0:
-                    m_enemy = UnitFactory.CreateGoblin();
+                    m_enemy = UnitFactory.Create(m_goblinData);
                     break;
-            
+
                 case 1:
-                    m_enemy = UnitFactory.CreateOrc();
+                    m_enemy = UnitFactory.Create(m_orcData);
                     break;
-            
+
                 case 2:
-                    m_enemy = UnitFactory.CreateTroll();
+                    m_enemy = UnitFactory.Create(m_trollData);
                     break;
             }
         }
-
+        
         private void Start()
         {
             StartCoroutine(Fight());
