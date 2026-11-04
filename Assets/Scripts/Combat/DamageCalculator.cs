@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Task4
+namespace Combat
 {
     public static class DamageCalculator
     {
@@ -13,9 +13,23 @@ namespace Task4
             Ice
         }
 
+        public enum ElementEffect
+        {
+            None,
+            Same,
+            Opposite
+        }
+
         public static int Calculate(int damage, int armor, Element weapon, Element target, float crit)
         {
+            return Calculate(damage, armor, weapon, target, crit, out _, out _);
+        }
+
+        public static int Calculate(int damage, int armor, Element weapon, Element target, float crit, 
+            out bool isCrit, out ElementEffect elementEffect)
+        {
             int result = Mathf.Max(1, damage - armor);
+            elementEffect = ElementEffect.None;
         
             switch (weapon, target)
             {
@@ -24,17 +38,20 @@ namespace Task4
             
                 case(Element.Fire, Element.Fire) or (Element.Ice, Element.Ice):
                     result = 0;
+                    elementEffect = ElementEffect.Same;
                     break;
             
                 case(Element.Fire, Element.Ice) or (Element.Ice, Element.Fire):
                     result = Mathf.FloorToInt(result * ElementMultiplier);
+                    elementEffect = ElementEffect.Opposite;
                     break;
             }
 
-            bool isCrit = Random.Range(0f, 1f) < crit;
-            int finalResult = isCrit ? result * 2 : result;
+            isCrit = Random.Range(0f, 1f) < crit;
             
-            return finalResult;
+            return isCrit ? result * 2 : result;
         }
     }
+
 }
+

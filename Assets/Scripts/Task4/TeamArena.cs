@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+using DamageCalculator = Combat.DamageCalculator;
+
 namespace Task4
 {
     public class TeamArena : MonoBehaviour

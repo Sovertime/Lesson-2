@@ -1,4 +1,4 @@
-using UnityEngine;
+using DamageCalculator = Combat.DamageCalculator;
 
 namespace Task4
 {

@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using DamageCalculator = Combat.DamageCalculator;
+
 namespace Task4
 {
     public class Unit
