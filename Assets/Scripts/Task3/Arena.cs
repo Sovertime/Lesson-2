@@ -24,11 +24,11 @@ namespace Task3
             switch (m_heroClass)
             {
                 case HeroClass.Warrior:
-                    m_hero = new Unit("Воин", 100, 10, 16);
+                    m_hero = UnitFactory.CreateWarrior();
                     break;
             
                 case HeroClass.Mage:
-                    m_hero = new Unit("Маг", 130, 6, 12);
+                    m_hero = UnitFactory.CreateMage();
                     break;
             }
         
@@ -37,15 +37,15 @@ namespace Task3
             switch (randomEnemy)
             {
                 case 0:
-                    m_enemy = new Unit("Гоблин", 50, 4, 8);
+                    m_enemy = UnitFactory.CreateGoblin();
                     break;
             
                 case 1:
-                    m_enemy = new Unit("Орк", 80, 5, 10);
+                    m_enemy = UnitFactory.CreateOrc();
                     break;
             
                 case 2:
-                    m_enemy = new Unit("Тролль", 140, 8, 12);
+                    m_enemy = UnitFactory.CreateTroll();
                     break;
             }
         }
