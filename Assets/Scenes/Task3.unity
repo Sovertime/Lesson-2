@@ -386,8 +386,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8075c260fdfedb4b90873f79525d8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Task3.Arena
-  heroClass: 1
-  roundDelay: 3
+  m_heroClass: 0
+  m_roundDelay: 3
+  m_rounds: 15
+  m_warriorData: {fileID: 11400000, guid: 95972624394912549954199df3762211, type: 2}
+  m_mageData: {fileID: 11400000, guid: baea7660a2bd145419744226ec8f3db2, type: 2}
+  m_goblinData: {fileID: 11400000, guid: 439811f79b307934ab959ffe8c74554b, type: 2}
+  m_orcData: {fileID: 11400000, guid: e3401387a3d48da4b86d8cfaadd212fd, type: 2}
+  m_trollData: {fileID: 11400000, guid: 725a6ff18067f1a41bc875ae7ea55190, type: 2}
 --- !u!1 &1533143578
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using DamageCalculator = Combat.DamageCalculator;
+using Characters;
 
 namespace Task4
 {
@@ -11,62 +12,37 @@ namespace Task4
         [Header("Arena Settings")]
         [SerializeField, Min(0f)] private float m_roundDelay = 1.5f;
         [SerializeField, Min(1)] private int m_rounds = 30;
+        [SerializeField, Min(1)] private int m_heroCount = 3;
+        [SerializeField, Min(1)] private int m_enemyCount = 3;
+        
+        [Header("Characters")]
+        [SerializeField] private CharacterData[] m_heroData;
+        [SerializeField] private CharacterData[] m_enemyData;
         
         private List<Unit> m_enemies = new List<Unit>();
         private List<Unit> m_heroes = new List<Unit>();
+        private WaitForSeconds m_roundDelayWait;
 
         private void Awake()
         {
+           m_roundDelayWait = new WaitForSeconds(m_roundDelay);
+            
            CreateEnemies();
            CreateHeroes();
            
            PrintFight();
         }
-
+        
         private void CreateEnemies()
         {
-            while (m_enemies.Count < 3)
-            {
-                int randomEnemy = Random.Range(0, 3);
-
-                switch (randomEnemy)
-                {
-                    case 0:
-                        m_enemies.Add(new Unit("Гоблин", 50, 4, 0.15f, DamageCalculator.Element.None, 
-                            new Weapon("Кинжал", 4, 8, DamageCalculator.Element.None)));
-                        break;
-                    case 1:
-                        m_enemies.Add(new Unit("Орк", 140, 8, 0.25f, DamageCalculator.Element.Fire,
-                            new Weapon("Топор", 8, 14, DamageCalculator.Element.Fire)));
-                        break;
-                    case 2:
-                        m_enemies.Add(new Unit("Тролль", 80, 5, 0.2f, DamageCalculator.Element.Ice, 
-                            new Weapon("Копье", 6, 12, DamageCalculator.Element.Ice)));
-                        break;
-                }
-            }
+            m_enemies = new List<Unit>(UnitFactory.CreateRandom(m_enemyData, m_enemyCount));
         }
 
         private void CreateHeroes()
         {
-            while (m_heroes.Count < 3)
-            {
-                int randomHero = Random.Range(0, 2);
-            
-                switch (randomHero)
-                {
-                    case 0:
-                        m_heroes.Add(new Unit("Воин", 100, 10, 0.2f, DamageCalculator.Element.Fire, 
-                            new Weapon("Меч", 6, 12, DamageCalculator.Element.Fire)));
-                        break;
-                    case 1:
-                        m_heroes.Add(new Unit("Маг", 130, 3, 0.35f, DamageCalculator.Element.Ice,
-                            new Weapon("Посох", 4, 20, DamageCalculator.Element.Ice)));
-                        break;
-                }
-            }
+            m_heroes = new List<Unit>(UnitFactory.CreateRandom(m_heroData, m_heroCount));
         }
-
+        
         private void Start()
         {
             StartCoroutine(Fight());
@@ -84,8 +60,8 @@ namespace Task4
 
                 for (int i = 0; i < maxCount; i++)
                 {
-                    yield return new WaitForSeconds(m_roundDelay);
-
+                    yield return m_roundDelayWait;
+                    
                     if (i < m_heroes.Count)
                     {
                         Attack(m_heroes[i], m_enemies, "green");
