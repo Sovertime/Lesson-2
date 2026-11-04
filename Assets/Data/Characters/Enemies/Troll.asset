@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7139fffd46f416249aeb7fff31217ff2, type: 3}
+  m_Name: Troll
+  m_EditorClassIdentifier: Assembly-CSharp::Characters.CharacterData
+  m_characterName: "\u0422\u0440\u043E\u043B\u043B\u044C"
+  m_health: 140
+  m_minDamage: 8
+  m_maxDamage: 12
+  m_armor: 5
+  m_critChance: 0.2
+  m_element: 2
+  m_weaponName: "\u041A\u043E\u043F\u044C\u0435"
+  m_weaponMinDamage: 6
+  m_weaponMaxDamage: 12
+  m_weaponElement: 2
