@@ -1,5 +1,8 @@
 using UnityEngine;
 
+using Element = Combat.DamageCalculator.Element;
+using ElementEffect = Combat.DamageCalculator.ElementEffect;
+
 namespace Task1
 {
     public class DamageCalculator : MonoBehaviour
@@ -12,8 +15,7 @@ namespace Task1
         [Header("Elements")]
         [SerializeField] private Element m_weaponElement;
         [SerializeField] private Element m_targetElement;
-    
-        private const float ElementMultiplier = 1.5f;
+        
         private int m_attackCount;
 
         private void Start()
@@ -24,45 +26,25 @@ namespace Task1
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-                Calculate(m_baseDamage, m_baseArmor, m_weaponElement, m_targetElement, m_critChance);
+                Calculate();
         }
 
-        private enum Element
+        private void Calculate()
         {
-            None,
-            Fire,
-            Ice
-        }
-
-        private void Calculate(int damage, int armor, Element weapon, Element target, float crit)
-        {
-            int result = Mathf.Max(1, damage - armor);
-            string elementText = "без бонуса стихии";
-        
-            switch (weapon, target)
-            {
-                case (Element.None, _) or (_, Element.None):
-                    break;
-            
-                case(Element.Fire, Element.Fire) or (Element.Ice, Element.Ice):
-                    result = 0;
-                    elementText = "одинаковые стихии";
-                    break;
-            
-                case(Element.Fire, Element.Ice) or (Element.Ice, Element.Fire):
-                    result = Mathf.FloorToInt(result * ElementMultiplier);
-                    elementText = "стихия х1.5";
-                    break;
-            }
+            int damage = Combat.DamageCalculator.Calculate(m_baseDamage, m_baseArmor, m_weaponElement, m_targetElement, m_critChance, out bool isCrit, out ElementEffect elementEffect);
 
             m_attackCount++;
 
-            bool isCrit = Random.Range(0f, 1f) < crit;
-            int finalResult = isCrit ? result * 2 : result;
+            string elementText = elementEffect switch
+            {
+                ElementEffect.Same => "одинаковые стихии", 
+                ElementEffect.Opposite => "стихия х1.5", 
+                _ => "без бонуса стихии"
+            };
 
             string critText = isCrit ? "крит х2" : "без крита";
-        
-            Debug.Log($"Удар {m_attackCount}: {finalResult} урона ({elementText}, {critText})");
+            
+            Debug.Log($"Удар {m_attackCount}: {damage} урона ({elementText}, {critText})");
         }
     }
 }
